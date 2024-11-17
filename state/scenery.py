@@ -7,13 +7,6 @@ class Scenery:
         self._background = pygame.image.load(image_path).convert()
         self._background = pygame.transform.scale(self._background, (D.SCREEN_WIDTH.value, D.SCREEN_HEIGHT.value))
         self._y = 0
-        self._speed = 0.001
-
-    def update(self):
-        self._y += self._speed
-
-        if self._y > D.SCREEN_HEIGHT.value:
-            self._y = 0
 
     def draw(self, screen):
         screen.blit(self._background, (0, self._y))

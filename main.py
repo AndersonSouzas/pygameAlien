@@ -26,7 +26,6 @@ def game_loop():
                     running = False
                     pygame.quit()
 
-        background.update()
         background.draw(screen)
 
         pygame.display.flip()
