@@ -11,7 +11,6 @@ Neste jogo, o jogador controla um personagem que se movimenta dentro de um cená
 - O jogador controla o personagem utilizando as teclas de seta (cima, baixo, esquerda, direita).
 - Inimigos se movem de forma aleatória e mudam de direção ao bater nas bordas da tela.
 - Quando o personagem colide com um inimigo, o jogo exibe uma mensagem de "Game Over".
-- O jogo roda em uma tela com dimensões de **800x600 pixels**.
 
 ### Desafios
 
