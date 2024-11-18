@@ -15,6 +15,6 @@ class PlayerState:
     def get_player_position_y(self) -> float:
         return self._player_position_y
 
-    def set_player_position(self, position_x, position_y):
+    def set_player_position(self, position_x: float, position_y: float):
         self._player_position_x = position_x
         self._player_position_y = position_y
