@@ -1,12 +1,13 @@
 from utils import PlayerAction
 from typing import List
+from utils import Dimensions as D
 
 
 class PlayerState:
     def __init__(self):
         self._player_action: PlayerAction = PlayerAction.IDLE
-        self._player_position_x: float = 0
-        self._player_position_y: float = 0
+        self._player_position_x: float = (D.SCREEN_WIDTH.value // 2 - 32)
+        self._player_position_y: float = (D.SCREEN_HEIGHT.value // 2 - 32)
         self._sprite_index: int = 0
         self._animation_update_time: float = 0
 
