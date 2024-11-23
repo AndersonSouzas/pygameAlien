@@ -1,8 +1,9 @@
 import pygame
-import os
 from sys import exit
-from utils import Dimensions
-from state import Scenery
+from utils import Dimensions, PlayerAction, PlayerColor
+from state import Scenery, PlayerState
+from inputs import Keymap
+from sprite import Animation
 
 pygame.init()
 screen = pygame.display.set_mode((Dimensions.SCREEN_WIDTH.value, Dimensions.SCREEN_HEIGHT.value))
@@ -10,14 +11,18 @@ pygame.display.set_caption('Aliens')
 
 clock = pygame.time.Clock()
 FPS = 60
-base_dir = os.path.dirname(os.path.abspath(__file__))
-image_path = os.path.join(base_dir, 'assets', 'images', 'background.jpg')
-background = Scenery(image_path)
+scenery = Scenery('background.jpg')
+
+player = PlayerState()
+player_color = PlayerColor.BLUE
+player_animation = Animation(player, player_color, speed=2.0, scale=0.9, screen=screen)
 
 
 def game_loop():
     running = True
     while running:
+        delta_time = clock.tick(FPS) / 1000.0
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -25,8 +30,11 @@ def game_loop():
                 if event.key == pygame.K_ESCAPE:
                     running = False
                     pygame.quit()
+                    
+        player_animation.update(delta_time)
 
-        background.draw(screen)
+        scenery.draw(screen)
+        player_animation.render()
 
         pygame.display.flip()
         clock.tick(FPS)
