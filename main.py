@@ -14,13 +14,13 @@ scenery = Scenery('background.jpg')
 
 player = PlayerState()
 player_color = PlayerColor.PINK
-player_animation = Animation(player, player_color, speed=125.0, scale=1.0, screen=screen)
+player_animation = Animation(player, player_color, speed=800.0, scale=1.0, screen=screen)
 
 
 def game_loop():
     running = True
     while running:
-        delta_time = clock.tick(FPS) / 100
+        delta_time = clock.tick(FPS) / 1000.0
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
