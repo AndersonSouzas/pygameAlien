@@ -1,6 +1,6 @@
 from pygame.key import get_pressed
 from inputs import Keymap
-from utils import PlayerAction, PlayerColor
+from utils import PlayerAction, PlayerColor, Dimensions
 from state import PlayerState
 from os import path, listdir
 from typing import List
@@ -36,6 +36,7 @@ class Animation:
         files: List[str] = listdir(sprites_path)
 
         for file in files:
+            print(f"Carregando sprite: {file} de {sprites_path}")  # Debug
             sprite: Surface = image.load(f'{sprites_path}/{file}')
             width, height = sprite.get_size()
             scaled_sprite: Surface = transform.scale(sprite, (int(width * self._scale), int(height * self._scale)))
@@ -67,6 +68,18 @@ class Animation:
         player_x, player_y = self._player.get_player_position()
         new_x = player_x + dx
         new_y = player_y + dy
+
+        screen_width = Dimensions.SCREEN_WIDTH.value
+        screen_height = Dimensions.SCREEN_HEIGHT.value
+
+        if self._current_sprites:
+            sprite_width, sprite_height = self._current_sprites[self._current_sprite_index].get_size()
+        else:
+            sprite_width, sprite_height = 0, 0
+
+        new_x = max(0, min(new_x, screen_width - sprite_width))
+        new_y = max(0, min(new_y, screen_height - sprite_height))
+
         self._player.set_player_position(new_x, new_y)
 
         if self._time_since_last_frame >= self._speed:
@@ -77,7 +90,12 @@ class Animation:
 
     def render(self):
         if not self._current_sprites:
-            raise ValueError(f"Nenhum sprite carregado para a ação {self._player.get_player_action()}.")
+            print(f"Nenhum sprite carregado para a ação {self._player.get_player_action()}.")
+            return
+
+        if self._current_sprite_index >= len(self._current_sprites):
+            print(f"Índice do sprite {self._current_sprite_index} está fora do intervalo.")
+            return
 
         current_sprite = self._current_sprites[self._current_sprite_index]
 
