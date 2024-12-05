@@ -36,7 +36,7 @@ class Animation:
         files: List[str] = listdir(sprites_path)
 
         for file in files:
-            print(f"Carregando sprite: {file} de {sprites_path}")  # Debug
+            print(f"Carregando sprite: {file} de {sprites_path}")
             sprite: Surface = image.load(f'{sprites_path}/{file}')
             width, height = sprite.get_size()
             scaled_sprite: Surface = transform.scale(sprite, (int(width * self._scale), int(height * self._scale)))
