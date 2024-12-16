@@ -1,4 +1,4 @@
 from .animation import Animation
-from .enemy import Enemy
+from .enemy import Enemy, EnemyManager
 
-__all__ = ['Animation', 'Enemy']
+__all__ = ['Animation', 'Enemy', 'EnemyManager']
