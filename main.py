@@ -1,9 +1,8 @@
 import pygame
-import random
 from sys import exit
 from utils import Dimensions, PlayerColor
 from state import Scenery, PlayerState
-from sprite import Animation, Enemy
+from sprite import Animation, EnemyManager
 
 pygame.init()
 screen = pygame.display.set_mode((Dimensions.SCREEN_WIDTH.value, Dimensions.SCREEN_HEIGHT.value))
@@ -18,12 +17,9 @@ player_color = PlayerColor.PINK
 player_animation = Animation(player, player_color, speed=800.0, scale=1.0, screen=screen)
 
 enemy_group = pygame.sprite.Group()
+enemy_manager = EnemyManager(enemy_group)
 
-for _ in range(5):
-    x = random.randint(0, Dimensions.SCREEN_WIDTH.value - 1)
-    y = random.randint(0, Dimensions.SCREEN_HEIGHT.value - 1)
-    speed = random.randint(3, 6)
-    enemy_group.add(Enemy(x, y, speed))
+enemy_manager.initial_spawn()
 
 
 def game_loop():
@@ -43,6 +39,8 @@ def game_loop():
 
         scenery.draw(screen)
         player_animation.render()
+
+        enemy_manager.spawn_enemy()
         enemy_group.update()
 
         enemy_group.draw(screen)
