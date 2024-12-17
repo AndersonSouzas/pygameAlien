@@ -13,7 +13,7 @@ FPS = 60
 scenery = Scenery('background.jpg')
 
 player = PlayerState()
-player_color = PlayerColor.PINK
+player_color = PlayerColor.YELLOW
 player_animation = Animation(player, player_color, speed=800.0, scale=1.0, screen=screen)
 
 enemy_group = pygame.sprite.Group()
