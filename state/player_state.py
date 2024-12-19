@@ -1,3 +1,4 @@
+import pygame
 from utils import PlayerAction
 from typing import List
 from utils import Dimensions as D
@@ -10,6 +11,10 @@ class PlayerState:
         self._player_position_y: float = (D.SCREEN_HEIGHT.value // 2 - 32)
         self._sprite_index: int = 0
         self._animation_update_time: float = 0
+        self.rect = pygame.Rect(self._player_position_x, self._player_position_y, 64, 64)
+
+    def update_rect(self, sprite_width: int, sprite_height: int):
+        self.rect = pygame.Rect(self._player_position_x, self._player_position_y, sprite_width, sprite_height)
 
     def get_player_action(self) -> PlayerAction:
         return self._player_action
