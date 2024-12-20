@@ -13,6 +13,9 @@ class PlayerState:
         self._animation_update_time: float = 0
         self.rect = pygame.Rect(self._player_position_x, self._player_position_y, 64, 64)
 
+    def reset_position(self):
+        self.set_player_position((D.SCREEN_WIDTH.value // 2 - 32), (D.SCREEN_HEIGHT.value // 2 - 32))
+
     def update_rect(self, sprite_width: int, sprite_height: int):
         self.rect = pygame.Rect(self._player_position_x, self._player_position_y, sprite_width, sprite_height)
 
