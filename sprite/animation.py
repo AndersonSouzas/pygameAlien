@@ -88,6 +88,12 @@ class Animation:
 
         self._current_sprites = self._sprites[self._player.get_player_action()]
 
+    def get_current_sprite_animation(self) -> tuple[int, int]:
+        if self._current_sprites:
+            current_sprite = self._current_sprites[self._current_sprite_index]
+            return current_sprite.get_size()
+        return 0, 0
+
     def render(self):
         if not self._current_sprites:
             print(f"Nenhum sprite carregado para a ação {self._player.get_player_action()}.")
