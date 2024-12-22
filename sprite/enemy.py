@@ -63,3 +63,7 @@ class EnemyManager:
             self.enemy_group.add(self._generate_random_enemy())
             self.last_spawn_time = current_time
             self.speed_modifier += self.speed_increment_rate
+
+    def reset_enemies(self):
+        self.enemy_group.empty()
+        self.initial_spawn()

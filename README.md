@@ -8,9 +8,10 @@ Neste jogo, o jogador controla um personagem que se movimenta dentro de um cená
 
 ### Funcionalidades Básicas
 
-- O jogador controla o personagem utilizando as teclas de seta (cima, baixo, esquerda, direita).
+- O jogador controla o personagem utilizando as teclas: (W, S, A, D).
 - Inimigos se movem de forma aleatória e mudam de direção ao bater nas bordas da tela.
 - Quando o personagem colide com um inimigo, o jogo exibe uma mensagem de "Game Over".
+- Após o Game Over é possivel reiniciar o jogo usando a tecla: R
 
 ### Desafios
 
