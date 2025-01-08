@@ -20,7 +20,7 @@ class Score:
             text=text,
             font_size=self.font_size,
             font_color=self.color,
-            position=(0, 0),
+            position=(0, 0)
         )
         text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2 + y_offset))
         screen.blit(text_surface, text_rect)
