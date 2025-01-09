@@ -19,6 +19,12 @@ Neste jogo, o jogador controla um personagem que se movimenta dentro de um cená
 - **Desafio 2**: Aumenta a velocidade dos inimigos com o tempo, aumentando a dificuldade.
 - **Desafio 3**: Adição de mais inimigos que surgem de forma aleatória em diferentes posições.
 
+### Telas
+
+![Main Menu](assets/images/main_menu.png)
+![GamePlay](assets/images/gameplay.gif)
+![Game Over](assets/images/game_over.png)
+
 ## Requisitos
 
 - Python 3.x
